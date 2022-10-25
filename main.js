@@ -270,8 +270,9 @@ function InputData() {
 			l = decoder_3Bit(state[i].substring(4, 7))
 			buffer[i][l] = str.substring(3, 16)
 			state[i] = state[i].substring(0, 4) + GetNextNumber_3Bit(state[i].substring(4, 7))
-			k = RU.indexOf(toString(i))
+			k = RU.indexOf(i)
 			RU = i + RU.substring(0, k) + RU.substring(k+1, 4)
+			console.log("1 RU:", RU)
 
 			k = GetValidSender()
 			sendertag[k].children[0].innerHTML = str[0]
@@ -305,8 +306,9 @@ function InputData() {
 		}
 		else {
 			// clear first
-			k = RU.indexOf(toString(i))
+			k = RU.indexOf(i)
 			RU = i + RU.substring(0, k) + RU.substring(k+1, 4)
+			console.log("2 RU:", RU)
 			buffer[i][0] = str.substring(3, 16)
 			state[i] = state[i].substring(0, 4) + "001"
 			for(k = 1; k < 4; k++) {
@@ -358,8 +360,9 @@ function InputData() {
 	else {
 		if (j < state.length) {
 			// get a valid line
-			k = RU.indexOf(toString(j))
+			k = RU.indexOf(j)
 			RU = j + RU.substring(0, k) + RU.substring(k+1, 4)
+			console.log("3 RU:", RU)
 			state[j] = "0"+str.substring(0, 3)+"001"
 			buffer[j][0] = str.substring(3, 16)
 
@@ -396,6 +399,7 @@ function InputData() {
 			// LRU
 			i = Number(RU[3])
 			RU = i + RU.substring(0, 3)
+			console.log("4 RU:", RU)
 			l = decoder_3Bit(state[i].substring(4, 7))
 			for(k = 1; k < l; k++) {
 				buffer[i][k] = "             "
