@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Merging Write Buffer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="main.js"></script>
+  <link href="index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="LoadFunction();">
+	<div class = "title">
+		<h1><b>Merging Write Buffer</b></h1>
+		<h2>-- Cache Optimization by Reducing Miss Penalty</h2>
+		<p>Computer Architecture 2022 fall-winter of ZJU</p>
+	</div>
+	<div class="BufferBlock">
+		<div class="Explain">
+			<div class="ValidArea Ex1"></div><div class="Word Ex2">valid bit</div><div class="clear"></div>
+			<div class="TagArea Ex1"></div><div class="Word Ex2">tag</div><div class="clear"></div>
+			<div class="CounterArea Ex1"></div><div class="Word Ex2">counter</div><div class="clear"></div>
+			<div class="OffsetArea Ex1"></div><div class="Word Ex2">offset</div><div class="clear"></div>
+			<div class="DataArea Ex1"></div><div class="Word Ex2">data</div><div class="clear"></div>
+		</div>
+		<div class="DataEntry">
+			<div class="line"><img class="pic1" src="arrow2.png"></div>
+			<div class="TagArea">
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="OffsetArea">
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="Bit"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="DataArea">
+				<div class="Byte"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div><img class="pic2" src="arrow.png"></div>
+		<div class="Chooser">
+			<div class="ChooserLine">
+				<div class="ValidArea">
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="TagArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="CounterArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic3" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="ChooserLine">
+				<div class="ValidArea">
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="TagArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="CounterArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic3" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="ChooserLine">
+				<div class="ValidArea">
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="TagArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="CounterArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic3" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="ChooserLine">
+				<div class="ValidArea">
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="TagArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="CounterArea">
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="Bit"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic3" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="Buffer">
+
+			<div class="BufferLine">
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic4" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="BufferLine">
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic4" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="BufferLine">
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic4" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="BufferLine">
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="DataBlock">
+					<div class="OffsetArea">
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="Bit"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="DataArea">
+						<div class="Byte"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="line"><img class="pic4" src="arrow2.png"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+	<div class="TagArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="OffsetArea2"><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div><div class="Bit"></div></div>
+	<div class="DataArea2"><div class="Byte"></div></div>
+</body>
+</html>

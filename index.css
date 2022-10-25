@@ -1,0 +1,180 @@
+@font-face{
+	font-family: 'myArial';
+	src: url('arial.ttf');
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.title {
+	text-align: center;
+	margin-top: 80px;
+}
+
+.BufferBlock{
+	position: relative;
+	background-color: #ffffcc;
+	border: solid 10px #ffcc66;
+	border-radius: 10px;
+	padding: 50px;
+	width: 1100px;
+	margin:0 auto;
+	margin-top: 60px;
+}
+
+/***********************************************************************/
+
+.Bit {
+	position: relative;
+	width: 15px;
+	height: 20px;
+	float: left;
+	font-family: 'myArial';
+	font-size: 18px;
+	text-align: center;
+}
+
+.Byte {
+	position: relative;
+	width: 80px;
+	height: 20px;
+	font-family: 'myArial';
+	font-size: 18px;
+	text-align: center;
+}
+
+.clear{
+	clear: both;
+}
+
+.Chooser{
+	float:left;
+}
+
+.ChooserLine{
+
+}
+
+.ValidArea{
+	position: relative;
+	background-color: #ff9999;
+	border: solid 5px #ff6666;
+	float: left;
+}
+
+.TagArea{
+	position: relative;
+	background-color: #ccff99;
+	border: solid 5px #99ff66;
+	float: left;
+}
+
+.CounterArea{
+	position: relative;
+	background-color: #ccffff;
+	border: solid 5px #33ccff;
+	float: left;
+}
+
+.Buffer {
+	float:left;
+}
+
+.BufferLine {
+
+}
+
+.DataBlock {
+	float:left;
+	margin-left: 2px;
+}
+
+.OffsetArea{
+	position: relative;
+	background-color: #ccccff;
+	border: solid 5px #9999ff;
+	float: left;
+}
+
+.DataArea {
+	position: relative;
+	background-color: #f0f0f5;
+	border: solid 5px #666699;
+	float: left;
+}
+
+/*************************************************************************************/
+.line {
+	float: left;
+}
+
+.pic1 {
+	margin-left: 60px;
+	margin-right: 40px;
+	width: 80px;
+	height: 30px;
+}
+.pic2 {
+	margin-left: 250px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 60px;
+	height: 100px;
+}
+.pic3 {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 80px;
+	height: 30px;
+}
+.pic4 {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 80px;
+	height: 30px;
+}
+
+/*************************************************************************************/
+.Explain{
+	position: absolute;
+	top: 40px;
+	left: 800px;
+}
+
+.Ex1 {
+	padding: 4px;
+	border-radius: 25%;
+	margin-top: 5px;
+}
+
+.Ex2 {
+	margin-left: 10px;
+	float: left;
+	margin-top: 5px;
+}
+
+.Word {
+	font-family: 'myArial';
+	font-size: 18px;
+}
+
+/*************************************************************************************/
+.TagArea2 {
+	position: absolute;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.DataArea2 {
+	position: absolute;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.OffsetArea2 {
+	position: absolute;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
